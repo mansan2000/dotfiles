@@ -35,6 +35,9 @@ elif [[ "$MODE" == "interactive" ]]; then
 
   read -p "Install i3 window manager? [y/N]: " i3_choice
   [[ "$i3_choice" =~ ^[Yy]$ ]] && run_stage install/02_i3.sh
+
+  [[ "$keyd_choice" =~ ^[Yy]$ ]] && run_stage install/03_keyd_keyboard_switch.sh  
+
 fi
 
 run_stage install/symlink_dotfiles.sh

@@ -21,4 +21,5 @@ link() {
 link "$HOME/dotfiles/.config/fish/config.fish" "$HOME/.config/fish/config.fish"
 link "$HOME/dotfiles/.config/i3/config" "$HOME/.config/i3/config"
 link "$HOME/dotfiles/.xinitrc" "$HOME/.xinitrc"
+link "$HOME/dotfiles/keyd/default-internal.conf" "/etc/keyd/default.conf"
 
