@@ -1,9 +1,35 @@
 #!/usr/bin/env bash
 set -e
-echo "[*] Installing i3..."
 
-sudo apt install -y i3 xinit xterm
+is_wsl() {
+  grep -qiE 'microsoft|wsl' /proc/version
+}
 
-echo "[*] Setting up .xinitrc"
+is_headless() {
+  ! command -v startx >/dev/null
+}
+
+echo "[*] Checking system compatibility for i3..."
+
+if is_wsl; then
+  echo "[!] Detected WSL. X11/i3 is not supported here."
+  exit 1
+fi
+
+if is_headless; then
+  echo "[*] X11 is not installed."
+  read -p "Install minimal X11 + i3 stack? [y/N]: " install_choice
+  if [[ "$install_choice" =~ ^[Yy]$ ]]; then
+    sudo apt install -y xorg xinit xterm i3 lightdm
+  else
+    echo "[!] Skipping i3 setup."
+    exit 0
+  fi
+else
+  echo "[✓] X11 environment detected"
+fi
+
+echo "[*] Finalizing i3 setup..."
+
 cp ~/dotfiles/.xinitrc ~/.xinitrc
 

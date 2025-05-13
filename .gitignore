@@ -1,0 +1,13 @@
+cat <<EOF > .gitignore
+# Ignore system and editor files
+*.swp
+*.swo
+*.bak
+.DS_Store
+
+# Ignore machine-specific configs unless needed
+.local/
+.cache/
+.history/
+EOF
+
