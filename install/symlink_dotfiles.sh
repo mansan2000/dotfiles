@@ -9,11 +9,11 @@ link() {
 
   if [[ -e "$dest" && ! -L "$dest" ]]; then
     echo "[!] Backing up $dest to $dest.bak"
-    mv "$dest" "$dest.bak"
+    sudo mv "$dest" "$dest.bak"
   fi
 
   mkdir -p "$(dirname "$dest")"
-  ln -sf "$src" "$dest"
+  sudo ln -sf "$src" "$dest"
   echo "[✓] Linked $dest → $src"
 }
 
