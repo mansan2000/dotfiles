@@ -37,5 +37,7 @@ elif [[ "$MODE" == "interactive" ]]; then
   [[ "$i3_choice" =~ ^[Yy]$ ]] && run_stage install/02_i3.sh
 fi
 
+run_stage install/symlink_dotfiles.sh
+
 info "Done. You may want to log out or reboot if you changed your shell."
 
