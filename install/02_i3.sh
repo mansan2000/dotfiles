@@ -29,6 +29,17 @@ else
   echo "[✓] X11 environment detected"
 fi
 
+echo "[*] Installing i3 config..."
+
+# Protect against accidental overwrite
+if [[ -f ~/.config/i3/config ]]; then
+  echo "[!] Existing i3 config found. Skipping copy."
+else
+  mkdir -p ~/.config/i3
+  cp ~/dotfiles/.config/i3/config ~/.config/i3/config
+  echo "[✓] i3 config installed."
+fi
+
 echo "[*] Finalizing i3 setup..."
 
 cp ~/dotfiles/.xinitrc ~/.xinitrc
